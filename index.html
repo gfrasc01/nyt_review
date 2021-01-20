@@ -25,21 +25,36 @@
 	}
 
 	button {
-		font-family: 20pt;
-		font-family: 'Georgia';
-		padding: 15px 32px;
+		background-color: black;
+  		border: none;
+  		color: white;
+  		padding: 15px 32px;
   		text-align: center;
   		text-decoration: none;
   		display: inline-block;
-  		border: black 2px;
+  		font-size: 20px;
+  		margin: 4px 2px;
+  		cursor: pointer;
+  		font-family: 'Georgia';
 	}
+
+	.center {
+  		display: flex;
+  		justify-content: center;
+  		align-items: center;
+	}
+
 </style>
-<body onload="document.getElementById('demo').innerHTML = formsentence(part1, part2, part3, part4, part5, part6, part7)">
+<body onload="window.variable = formsentence(part1, part2, part3, part4, part5, part6, part7); document.getElementById('demo').innerHTML = variable">
 <h1>Critics are Raving:</h1>
+<div>
 <mark class="big" id="demo"></mark>
+</div>
 <p class=quoteauthor>-The New York Times Book Review</p>
+<div class="center">
 <button onclick="window.variable = formsentence(part1, part2, part3, part4, part5, part6, part7); document.getElementById('demo').innerHTML = variable">More!</button>
 <button onclick="copyToClipboard(variable)">Copy to Clipboard</button>
+</div>
 <script type="text/javascript">
 	function randomnumber(arraylength){
 		var rand = Math.floor(Math.random()*arraylength);
@@ -50,9 +65,9 @@
 	var part2 = ["heart-wrenching","quirky","witty","sassy"]
 	var part3 = ["Thrillingly","Skillfully","Dazzlingly","Sensuously","Astonishly","Eloquently", "Confidently"]
 	var part4 = ["romantic","sumptuous","raw","authentic","piercing","captivating"]
-	var part5 = ["A masterpiece of","An intergenerational story of","A scathing satire of", "a skrewball comedy of"]
+	var part5 = ["A masterpiece of","An intergenerational story of","A scathing satire of", "a skrewball comedy of", "a tour de force of"]
 	var part6 = ["epic proportion","quiet intimacy","hilarious grandeur","intense power"]
-	var part7 = ["The perfect beach read","The next Great American Novel","A jaw-dropping debut","It casts a wonderful spell","You won't want it to end","You'll have a laughing fit followed by a mental breakdown","You'll question everything you know and hold dear","A true page-turner"]
+	var part7 = ["The perfect beach read","The next Great American Novel","A jaw-dropping debut","It casts a wonderful spell","You won't want it to end","You'll have a laughing fit followed by a mental breakdown","You'll question everything you know and hold dear","A true page-turner", "'Heart of Darkness' for the internet age"]
 
 	function formsentence(part1, part2, part3, part4, part5, part6, part7) {
 		var sentence = '"'+ part1[randomnumber(part1.length)]+" "+part2[randomnumber(part2.length)]+"... "+part3[randomnumber(part3.length)]+" "+part4[randomnumber(part4.length)]+"... "+part5[randomnumber(part5.length)]+" "+part6[randomnumber(part6.length)] +". "+ part7[randomnumber(part7.length)] + '."'
