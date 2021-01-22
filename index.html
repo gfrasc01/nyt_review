@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>NYT thing</title>
+<script src="jquery-3.5.1.min.js"></script>
 </head>
 <style type="text/css">
 	h1 {
@@ -44,16 +45,26 @@
   		align-items: center;
 	}
 
+	a {
+		color: white;
+		text-decoration: none;
+	}
+
 </style>
-<body onload="window.variable = formsentence(part1, part2, part3, part4, part5, part6, part7); document.getElementById('demo').innerHTML = variable">
+<body onload="window.variable = formsentence(part1, part2, part3, part4, part5, part6, part7); document.getElementById('demo').innerHTML = variable; document.getElementById('demo').innerHTML = variable">
 <h1>Critics are Raving:</h1>
 <div>
 <mark class="big" id="demo"></mark>
+<p id="demo2"></p>
 </div>
-<p class=quoteauthor>-The New York Times Book Review</p>
+<p class=quoteauthor>-The New York Times Book Review (Allegedly)</p>
 <div class="center">
 <button onclick="window.variable = formsentence(part1, part2, part3, part4, part5, part6, part7); document.getElementById('demo').innerHTML = variable">More!</button>
 <button onclick="copyToClipboard(variable)">Copy to Clipboard</button>
+
+<a id=TwitterButton href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" onclick="setHREF(formURL(variable))" data-text="#HEY"><button>Tweet</button></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 </div>
 <script type="text/javascript">
 	function randomnumber(arraylength){
@@ -61,9 +72,9 @@
 		return rand;
 	}
 
-	var part1 = ["Tragically","Relentlessly","Brutally","Astoundingly","Wickedly","Frighteningly","Deliriously","Sickeningly", "Sublimely"]
+	var part1 = ["Tragically","Relentlessly","Brutally","Astoundingly","Wickedly","Frighteningly","Deliriously","Sickeningly", "Sublimely", "Frenetically"]
 	var part2 = ["heart-wrenching","quirky","witty","sassy"]
-	var part3 = ["Thrillingly","Skillfully","Dazzlingly","Sensuously","Astonishly","Eloquently", "Confidently"]
+	var part3 = ["Thrillingly","Skillfully","Dazzlingly","Sensuously","Astonishingly","Eloquently", "Confidently"]
 	var part4 = ["romantic","sumptuous","raw","authentic","piercing","captivating"]
 	var part5 = ["A masterpiece of","An intergenerational story of","A scathing satire of", "a skrewball comedy of", "a tour de force of"]
 	var part6 = ["epic proportion","quiet intimacy","hilarious grandeur","intense power"]
@@ -81,6 +92,17 @@
     	dummy.select();
     	document.execCommand("copy");
     	document.body.removeChild(dummy);
+	}
+
+	function formURL(sentence) {
+		var string = sentence.replace(/\s/g,"%20");
+		var url = "https://twitter.com/intent/tweet?hashtags=FakeNYTBookReviews%20" + string;
+		return url;
+		window.alert(url);
+	}
+
+	function setHREF(url) {
+		document.getElementById("TwitterButton").href = url;
 	}
 
 </script>
